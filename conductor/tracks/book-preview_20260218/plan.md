@@ -3,7 +3,7 @@
 This plan outlines the steps to add a "Pore Dekhun" button, a dedicated preview page with an image carousel, and a footer attribution link, following the project's TDD workflow.
 
 ## Phase 1: Environment & Routing Setup
-- [ ] Task: Install dependencies (`react-router-dom`, `vitest`, `@testing-library/react`, `jsdom`, `@testing-library/jest-dom`)
+- [x] Task: Install dependencies (`react-router-dom`, `vitest`, `@testing-library/react`, `jsdom`, `@testing-library/jest-dom`) 1daa649
 - [ ] Task: Configure `vitest` in `vite.config.ts` and add `test` script to `package.json`
 - [ ] Task: Implement basic routing in `main.tsx` and `App.tsx` (Home and `/preview` routes)
 - [ ] Task: Create a placeholder `Preview` component in `src/Preview.tsx`
