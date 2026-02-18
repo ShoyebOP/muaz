@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Sun, Moon, ShoppingCart, BookOpen, Heart, Sparkles, Truck, ShieldCheck, Star } from 'lucide-react'
+import { Sun, Moon, ShoppingCart, BookOpen, Heart, Sparkles, Truck, ShieldCheck, Star, X } from 'lucide-react'
 import './App.css'
 import bookData from './book.json'
 
@@ -7,9 +7,20 @@ function App() {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme')
     if (saved) return saved
-    
-    // Fallback to system preference
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [orderCount, setOrderCount] = useState(() => {
+    const saved = localStorage.getItem('orderCount')
+    return saved ? parseInt(saved) : 191
+  })
+
+  const [formData, setOrderData] = useState({
+    name: '',
+    phone: '',
+    address: '',
+    email: ''
   })
 
   useEffect(() => {
@@ -17,22 +28,36 @@ function App() {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  // Listen for system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e: MediaQueryListEvent) => {
-      // Only auto-switch if the user hasn't manually set a preference in this session
       if (!localStorage.getItem('theme')) {
         setTheme(e.matches ? 'dark' : 'light')
       }
     }
-
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light')
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setOrderData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Telegram integration logic will be implemented in Phase 4
+    // For now, we simulate success
+    alert('আপনার অর্ডারের জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।')
+    setIsModalOpen(false)
+    const newCount = orderCount + 1
+    setOrderCount(newCount)
+    localStorage.setItem('orderCount', newCount.toString())
+    setOrderData({ name: '', phone: '', address: '', email: '' })
   }
 
   return (
@@ -72,13 +97,17 @@ function App() {
               <div className="desc">
                 <p>{bookData.description}</p>
               </div>
+
+              <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-gold)', fontWeight: '600', fontSize: '1rem' }}>
+                <Star size={18} fill="currentColor" /> {orderCount} জন ইতিমধেই অর্ডার করেছেন
+              </div>
               
               <div className="pricing-box">
                 <div className="price-info">
                   <span className="price-now">{bookData.price.discounted} {bookData.price.currency}</span>
                   <span className="price-was">{bookData.price.normal} {bookData.price.currency}</span>
                 </div>
-                <button className="buy-btn">
+                <button className="buy-btn" onClick={() => setIsModalOpen(true)}>
                   <ShoppingCart size={22} strokeWidth={2.5} />
                   বইটি অর্ডার করুন
                 </button>
@@ -91,6 +120,52 @@ function App() {
             </div>
           </div>
         </section>
+
+        {isModalOpen && (
+          <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+              <button className="modal-close" onClick={() => setIsModalOpen(false)}>
+                <X size={24} />
+              </button>
+              <h2 className="modal-title">অর্ডার ফর্ম</h2>
+              <form className="order-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name">আপনার নাম *</label>
+                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} placeholder="নাম লিখুন" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="phone">ফোন নম্বর *</label>
+                  <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleInputChange} placeholder="ফোন নম্বর লিখুন" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="address">ঠিকানা *</label>
+                  <textarea id="address" name="address" required value={formData.address} onChange={handleInputChange} rows={3} placeholder="সম্পূর্ণ ঠিকানা লিখুন"></textarea>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">ইমেইল (ঐচ্ছিক)</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="ইমেইল লিখুন" />
+                </div>
+
+                <div className="billing-summary">
+                  <div className="billing-row">
+                    <span>বইয়ের মূল্য:</span>
+                    <span>{bookData.price.discounted} {bookData.price.currency}</span>
+                  </div>
+                  <div className="billing-row">
+                    <span>ডেলিভারি চার্জ:</span>
+                    <span>{bookData.delivery.charge} {bookData.delivery.currency}</span>
+                  </div>
+                  <div className="billing-row total">
+                    <span>সর্বমোট:</span>
+                    <span>{bookData.price.discounted + bookData.delivery.charge} {bookData.price.currency}</span>
+                  </div>
+                </div>
+
+                <button type="submit" className="confirm-btn">অর্ডার নিশ্চিত করুন</button>
+              </form>
+            </div>
+          </div>
+        )}
 
         <section className="features-section">
           <div className="container features-grid">

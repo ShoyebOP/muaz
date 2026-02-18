@@ -298,6 +298,140 @@ footer {
   font-size: 0.9rem;
 }
 
+/* Modal and Form Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: var(--color-card-bg);
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: var(--border-slim);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--color-navy);
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-navy);
+}
+
+.form-group input, 
+.form-group textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: var(--border-slim);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-bengali);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.billing-summary {
+  background-color: rgba(212, 175, 55, 0.05);
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  border: 1px dashed var(--color-gold);
+}
+
+.billing-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.billing-row.total {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-gold);
+}
+
+.confirm-btn {
+  background-color: var(--color-navy);
+  color: var(--color-btn-text);
+  padding: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: var(--transition);
+}
+
+.confirm-btn:hover {
+  background-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 950px) {
   .hero-grid {
     grid-template-columns: 1fr;
