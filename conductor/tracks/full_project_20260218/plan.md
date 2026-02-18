@@ -42,12 +42,12 @@
     - [ ] Add success/error handling for the order confirmation.
 - [x] **Task: Setup Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)** (ec25f08)
 
-## Phase 5: Finalization and Deployment
-- [ ] **Task: Final Mobile Optimization and Polishing**
+## Phase 5: Finalization and Deployment [checkpoint: 8baacfe]
+- [x] **Task: Final Mobile Optimization and Polishing** (519e2e6)
     - [ ] Conduct a final pass on mobile responsiveness.
     - [ ] Refine classic and elegant styles based on product guidelines.
-- [ ] **Task: Vercel Deployment and Configuration**
+- [x] **Task: Vercel Deployment and Configuration** (14d0372)
     - [ ] Connect the GitHub repo to Vercel.
     - [ ] Configure environment variables (Telegram Bot Token, Chat ID) in Vercel.
     - [ ] Verify the live deployment.
-- [ ] **Task: Setup Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)**
+- [x] **Task: Setup Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)** (8baacfe)
