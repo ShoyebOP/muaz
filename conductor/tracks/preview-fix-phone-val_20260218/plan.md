@@ -1,6 +1,6 @@
 # Implementation Plan: Fix Preview Images and Add Phone Validation
 
-## Phase 1: Asset Reorganization and Preview Fix
+## Phase 1: Asset Reorganization and Preview Fix [checkpoint: a2bfb7e]
 - [x] Task: Reorganize and normalize preview images fb0f1af
     - [x] Create `public/book/` if not already present (Verify: `ls public/book`)
     - [x] Rename and move `book/page 1.jpg` to `public/book/page-1.jpg`
