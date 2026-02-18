@@ -9,11 +9,11 @@ This plan outlines the steps to add a "Pore Dekhun" button, a dedicated preview 
 - [x] Task: Create a placeholder `Preview` component in `src/Preview.tsx` fa0b0ac
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md) 9243443
 
-## Phase 2: Main Page & Footer Enhancements
+## Phase 2: Main Page & Footer Enhancements [checkpoint: 1968ffe]
 - [x] Task: Write tests for "Pore Dekhun" button and footer link in `App.test.tsx` 539b484
 - [x] Task: Implement "Pore Dekhun" button in `App.tsx` (Bangla: "পড়ে দেখুন") near the order button 6a05c36
 - [x] Task: Implement footer attribution link "made by Shoyeb Morshed" linking to Facebook in `App.tsx` 6a05c36
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) 1968ffe
 
 ## Phase 3: Preview Page Implementation
 - [ ] Task: Write tests for `Preview` component (image rendering, navigation back) in `Preview.test.tsx`
