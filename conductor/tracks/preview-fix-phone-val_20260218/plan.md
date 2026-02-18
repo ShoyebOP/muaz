@@ -12,19 +12,19 @@
     - [x] Update the `images` array in `src/pages/Preview.tsx` to use the normalized paths (e.g., `/book/page-1.jpg`)
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Asset Reorganization' (Protocol in workflow.md)
 
-## Phase 2: Phone Number Validation (TDD)
-- [ ] Task: Write failing tests for phone number validation
-    - [ ] Create a new test file or update `src/pages/Home.test.tsx` (if it exists, otherwise create it)
-    - [ ] Add test cases to verify that a phone number must be exactly 11 digits and contain only numbers
-    - [ ] Confirm tests fail (`npm test`)
-- [ ] Task: Implement phone number validation in `Home.tsx`
-    - [ ] Add `pattern="[0-9]{11}"` and `maxLength={11}` to the phone input in `src/pages/Home.tsx`
-    - [ ] Add a validation check in the `handleSubmit` function to ensure exactly 11 digits before proceeding with the fetch call
-    - [ ] Add error messaging (Bengali) for validation failures
-- [ ] Task: Verify implementation and coverage
-    - [ ] Run tests to confirm they pass (`npm test`)
-    - [ ] Check code coverage for the new validation logic (`npm run coverage`)
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Phone Number Validation' (Protocol in workflow.md)
+## Phase 2: Phone Number Validation (TDD) [checkpoint: 96c317a]
+- [x] Task: Write failing tests for phone number validation 96c317a
+    - [x] Create a new test file or update `src/pages/Home.test.tsx` (if it exists, otherwise create it)
+    - [x] Add test cases to verify that a phone number must be exactly 11 digits and contain only numbers
+    - [x] Confirm tests fail (`npm test`)
+- [x] Task: Implement phone number validation in `Home.tsx` 96c317a
+    - [x] Add `pattern="[0-9]{11}"` and `maxLength={11}` to the phone input in `src/pages/Home.tsx`
+    - [x] Add a validation check in the `handleSubmit` function to ensure exactly 11 digits before proceeding with the fetch call
+    - [x] Add error messaging (Bengali) for validation failures
+- [x] Task: Verify implementation and coverage 96c317a
+    - [x] Run tests to confirm they pass (`npm test`)
+    - [x] Check code coverage for the new validation logic (`npm run coverage`)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Phone Number Validation' (Protocol in workflow.md)
 
 ## Phase 3: Final Integration and Cleanup
 - [ ] Task: Final project-wide check
