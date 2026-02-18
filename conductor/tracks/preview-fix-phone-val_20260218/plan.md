@@ -1,13 +1,13 @@
 # Implementation Plan: Fix Preview Images and Add Phone Validation
 
 ## Phase 1: Asset Reorganization and Preview Fix
-- [ ] Task: Reorganize and normalize preview images
-    - [ ] Create `public/book/` if not already present (Verify: `ls public/book`)
-    - [ ] Rename and move `book/page 1.jpg` to `public/book/page-1.jpg`
-    - [ ] Rename and move `book/page 2.jpg` to `public/book/page-2.jpg`
-    - [ ] Rename and move `book/page 3.jpg` to `public/book/page-3.jpg`
-    - [ ] Rename and move `book/page 4.jpg` to `public/book/page-4.jpg`
-    - [ ] Move `book/book.jpg` to `public/book/book.jpg` (if not already there and correctly referenced)
+- [x] Task: Reorganize and normalize preview images fb0f1af
+    - [x] Create `public/book/` if not already present (Verify: `ls public/book`)
+    - [x] Rename and move `book/page 1.jpg` to `public/book/page-1.jpg`
+    - [x] Rename and move `book/page 2.jpg` to `public/book/page-2.jpg`
+    - [x] Rename and move `book/page 3.jpg` to `public/book/page-3.jpg`
+    - [x] Rename and move `book/page 4.jpg` to `public/book/page-4.jpg`
+    - [x] Move `book/book.jpg` to `public/book/book.jpg` (if not already there and correctly referenced)
 - [ ] Task: Update `Preview.tsx` to use new image paths
     - [ ] Update the `images` array in `src/pages/Preview.tsx` to use the normalized paths (e.g., `/book/page-1.jpg`)
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Asset Reorganization' (Protocol in workflow.md)
