@@ -11,15 +11,15 @@
     - [ ] Install essential dependencies (e.g., `react-router-dom` if needed, `lucide-react` for icons).
 - [x] **Task: Setup Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)** (e28ec9c)
 
-## Phase 2: UI Foundation and Book Content
+## Phase 2: UI Foundation and Book Content [checkpoint: 6ba274d]
 - [x] **Task: Analyze Existing Book Content** (bcf7e8e)
     - [ ] Read and parse `book/book details.txt` for book information (title, price, etc.).
     - [ ] Confirm `book/book.jpg` is available for use in the UI.
-- [x] **Task: Implement Core Layout and Styling** (a954f75)
+- [x] **Task: Implement Core Layout and Styling** (51e16cc)
     - [ ] Create the main layout component with the Deep Navy and Cream palette.
     - [ ] Implement Dark Mode toggle logic and styles.
     - [ ] Build the Book Display section (Image + Summary).
-- [ ] **Task: Setup Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+- [x] **Task: Setup Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** (6ba274d)
 
 ## Phase 3: Order System and Billing Logic
 - [ ] **Task: Build Order Popup Component**
