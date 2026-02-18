@@ -26,8 +26,8 @@
     - [x] Check code coverage for the new validation logic (`npm run coverage`)
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Phone Number Validation' (Protocol in workflow.md)
 
-## Phase 3: Final Integration and Cleanup
-- [ ] Task: Final project-wide check
-    - [ ] Run a full build to ensure no regression (`npm run build`)
-    - [ ] Check for any unused images in the old `book/` directory and remove them if safe
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Final Integration' (Protocol in workflow.md)
+## Phase 3: Final Integration and Cleanup [checkpoint: 96c317a]
+- [x] Task: Final project-wide check 03ae540
+    - [x] Run a full build to ensure no regression (`npm run build`)
+    - [x] Check for any unused images in the old `book/` directory and remove them if safe
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Final Integration' (Protocol in workflow.md)
