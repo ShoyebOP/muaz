@@ -5,7 +5,7 @@ This plan outlines the steps to add a "Pore Dekhun" button, a dedicated preview 
 ## Phase 1: Environment & Routing Setup
 - [x] Task: Install dependencies (`react-router-dom`, `vitest`, `@testing-library/react`, `jsdom`, `@testing-library/jest-dom`) 1daa649
 - [x] Task: Configure `vitest` in `vite.config.ts` and add `test` script to `package.json` 869513a
-- [ ] Task: Implement basic routing in `main.tsx` and `App.tsx` (Home and `/preview` routes)
+- [x] Task: Implement basic routing in `main.tsx` and `App.tsx` (Home and `/preview` routes) 742cc30
 - [ ] Task: Create a placeholder `Preview` component in `src/Preview.tsx`
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
