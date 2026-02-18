@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
+// Mock localStorage
 Object.defineProperty(window, 'localStorage', {
   value: {
     getItem: vi.fn(),
@@ -11,16 +12,14 @@ Object.defineProperty(window, 'localStorage', {
   writable: true,
 })
 
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: vi.fn().mockImplementation(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: vi.fn(), // deprecated
-    removeListener: vi.fn(), // deprecated
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
-})
+// Mock matchMedia
+window.matchMedia = window.matchMedia || vi.fn().mockImplementation(query => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: vi.fn(), // deprecated
+  removeListener: vi.fn(), // deprecated
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  dispatchEvent: vi.fn(),
+}))

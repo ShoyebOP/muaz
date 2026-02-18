@@ -8,7 +8,10 @@ function Home() {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme')
     if (saved) return saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'
+    }
+    return 'light'
   })
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -44,14 +47,16 @@ function Home() {
   }, [theme])
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null
     const handleChange = (e: MediaQueryListEvent) => {
       if (!localStorage.getItem('theme')) {
         setTheme(e.matches ? 'dark' : 'light')
       }
     }
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    if (mediaQuery) {
+      mediaQuery.addEventListener('change', handleChange)
+      return () => mediaQuery.removeEventListener('change', handleChange)
+    }
   }, [])
 
   const toggleTheme = () => {
@@ -65,6 +70,17 @@ function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Phone number validation
+    if (!/^\d+$/.test(formData.phone)) {
+      alert('দয়া করে সঠিক নম্বর লিখুন।')
+      return
+    }
+    if (formData.phone.length !== 11) {
+      alert('ফোন নম্বর অবশ্যই ১১ ডিজিট হতে হবে।')
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -189,7 +205,18 @@ function Home() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone">ফোন নম্বর *</label>
-                  <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleInputChange} placeholder="ফোন নম্বর লিখুন" disabled={isSubmitting} />
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    required 
+                    value={formData.phone} 
+                    onChange={handleInputChange} 
+                    placeholder="ফোন নম্বর লিখুন (১১ ডিজিট)" 
+                    disabled={isSubmitting}
+                    pattern="[0-9]{11}"
+                    maxLength={11}
+                  />
                 </div>
                 <div className="form-group">
                   <label htmlFor="address">ঠিকানা *</label>
