@@ -15,12 +15,12 @@ This plan outlines the steps to add a "Pore Dekhun" button, a dedicated preview 
 - [x] Task: Implement footer attribution link "made by Shoyeb Morshed" linking to Facebook in `App.tsx` 6a05c36
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) 1968ffe
 
-## Phase 3: Preview Page Implementation
+## Phase 3: Preview Page Implementation [checkpoint: 9df5617]
 - [x] Task: Write tests for `Preview` component (image rendering, navigation back) in `Preview.test.tsx` 209f37e
 - [x] Task: Implement `Preview` component with a horizontal carousel for images in `/book/page 1-4.jpg` f058883
 - [x] Task: Style the carousel to be centered with empty sides on large screens and touch-friendly on mobile f058883
 - [x] Task: Add a "Back" button to the `Preview` page to return to the landing page f058883
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) 9df5617
 
 ## Phase 4: Final Polish & Quality Assurance
 - [ ] Task: Perform responsive testing on mobile and desktop views
