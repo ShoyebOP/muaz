@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Add a 'Pore Dekhun' button for book previews and a developer attribution link in the footer.**
+- [x] **Track: Add a 'Pore Dekhun' button for book previews and a developer attribution link in the footer.**
 *Link: [./tracks/book-preview_20260218/](./tracks/book-preview_20260218/)*
