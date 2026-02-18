@@ -319,10 +319,26 @@ footer {
   border-radius: 20px;
   width: 90%;
   max-width: 500px;
+  max-height: 90vh; /* Ensure it fits on screen */
+  overflow-y: auto; /* Enable scrolling */
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   border: var(--border-slim);
   animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Custom scrollbar for an elegant look */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 10px;
 }
 
 @keyframes modalFadeIn {
