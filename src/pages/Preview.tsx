@@ -5,10 +5,10 @@ import '../App.css'
 
 function Preview() {
   const images = [
-    '/book/page 1.jpg',
-    '/book/page 2.jpg',
-    '/book/page 3.jpg',
-    '/book/page 4.jpg'
+    '/book/page-1.jpg',
+    '/book/page-2.jpg',
+    '/book/page-3.jpg',
+    '/book/page-4.jpg'
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
