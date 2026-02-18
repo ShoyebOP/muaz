@@ -12,12 +12,7 @@ function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [orderCount, setOrderCount] = useState(() => {
-    // Reset to 191 if you want to force a reset, 
-    // or just let it start from 191 on a clean browser.
-    const saved = localStorage.getItem('orderCount_v2') // New version key to force reset to 191
-    return saved ? parseInt(saved) : 191
-  })
+  const [orderCount, setOrderCount] = useState(191)
 
   const [formData, setOrderData] = useState({
     name: '',
@@ -25,6 +20,22 @@ function App() {
     address: '',
     email: ''
   })
+
+  // Fetch global count on mount
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const res = await fetch('/api/get-count')
+        const data = await res.json()
+        if (data.count) {
+          setOrderCount(data.count)
+        }
+      } catch (err) {
+        console.error('Failed to fetch global count', err)
+      }
+    }
+    fetchCount()
+  }, [])
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -71,9 +82,8 @@ function App() {
       if (response.ok) {
         alert('আপনার অর্ডারের জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।')
         setIsModalOpen(false)
-        const newCount = orderCount + 1
-        setOrderCount(newCount)
-        localStorage.setItem('orderCount_v2', newCount.toString())
+        // Optimistic update
+        setOrderCount(prev => prev + 1)
         setOrderData({ name: '', phone: '', address: '', email: '' })
       } else {
         const errorData = await response.json()

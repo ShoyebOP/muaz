@@ -1,4 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { Redis } from '@upstash/redis';
+
+const redis = Redis.fromEnv();
 
 export default async function handler(
   request: VercelRequest,
@@ -51,6 +54,9 @@ export default async function handler(
     );
 
     if (telegramResponse.ok) {
+      // Increment global order counter in Upstash
+      await redis.incr('global_order_count');
+      
       return response.status(200).json({ success: true });
     } else {
       const errorData = await telegramResponse.json();
