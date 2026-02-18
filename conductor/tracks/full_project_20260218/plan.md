@@ -34,13 +34,13 @@
 - [x] **Task: Setup Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)** (1221749)
 
 ## Phase 4: Telegram Integration and Serverless Function
-- [ ] **Task: Create Vercel Serverless Function for Telegram**
+- [x] **Task: Create Vercel Serverless Function for Telegram** (e32ed7a)
     - [ ] Create `api/order.ts` (or similar) to handle POST requests.
     - [ ] Implement the Telegram Bot API call using `node-fetch` or similar.
-- [ ] **Task: Connect Frontend to Telegram API**
+- [x] **Task: Connect Frontend to Telegram API** (aaf9fff)
     - [ ] Implement form submission in the React app to call the serverless function.
     - [ ] Add success/error handling for the order confirmation.
-- [ ] **Task: Setup Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
+- [~] **Task: Setup Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
 
 ## Phase 5: Finalization and Deployment
 - [ ] **Task: Final Mobile Optimization and Polishing**

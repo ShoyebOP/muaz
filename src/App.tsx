@@ -13,7 +13,9 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [orderCount, setOrderCount] = useState(() => {
-    const saved = localStorage.getItem('orderCount')
+    // Reset to 191 if you want to force a reset, 
+    // or just let it start from 191 on a clean browser.
+    const saved = localStorage.getItem('orderCount_v2') // New version key to force reset to 191
     return saved ? parseInt(saved) : 191
   })
 
@@ -71,7 +73,7 @@ function App() {
         setIsModalOpen(false)
         const newCount = orderCount + 1
         setOrderCount(newCount)
-        localStorage.setItem('orderCount', newCount.toString())
+        localStorage.setItem('orderCount_v2', newCount.toString())
         setOrderData({ name: '', phone: '', address: '', email: '' })
       } else {
         const errorData = await response.json()

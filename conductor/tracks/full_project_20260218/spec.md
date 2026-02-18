@@ -12,6 +12,9 @@ This track covers the end-to-end implementation of the **muaz** book selling pag
     - An "Order" button that opens a popup.
     - Popup fields: Full Name, Phone Number, Shipping Address, and optional Email.
     - Real-time billing calculation showing Book Title, Price, Delivery Charge, and Total Amount.
+- **Order Counter:**
+    - A visible counter showing the number of orders (starting at 191 by default).
+    - The counter should increment by 1 upon successful order confirmation.
 - **Notification System:**
     - On confirmation, send customer and order details to a Telegram chat group via Vercel Serverless Functions.
 - **GitHub Initialization:** Create and push the project to a remote GitHub repository.
