@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { describe, it, expect } from 'vitest'
 import Preview from './Preview'
@@ -17,6 +17,40 @@ describe('Preview Component', () => {
     expect(images[1]).toHaveAttribute('src', '/book/page 2.jpg')
     expect(images[2]).toHaveAttribute('src', '/book/page 3.jpg')
     expect(images[3]).toHaveAttribute('src', '/book/page 4.jpg')
+  })
+
+  it('navigates to next and previous images', () => {
+    render(
+      <MemoryRouter>
+        <Preview />
+      </MemoryRouter>
+    )
+    
+    const nextBtn = screen.getByLabelText(/Next page/i)
+    const prevBtn = screen.getByLabelText(/Previous page/i)
+    const track = screen.getByRole('img', { name: /Page 1/i }).closest('.carousel-track')
+
+    expect(track).toHaveStyle('transform: translateX(-0%)')
+
+    fireEvent.click(nextBtn)
+    expect(track).toHaveStyle('transform: translateX(-100%)')
+
+    fireEvent.click(prevBtn)
+    expect(track).toHaveStyle('transform: translateX(-0%)')
+  })
+
+  it('navigates via dots', () => {
+    render(
+      <MemoryRouter>
+        <Preview />
+      </MemoryRouter>
+    )
+    
+    const dots = screen.getAllByLabelText(/Go to page/i)
+    const track = screen.getByRole('img', { name: /Page 1/i }).closest('.carousel-track')
+
+    fireEvent.click(dots[2])
+    expect(track).toHaveStyle('transform: translateX(-200%)')
   })
 
   it('contains a "ফিরে যান" button linking back to home', () => {
