@@ -15,7 +15,7 @@
 - [x] **Task: Analyze Existing Book Content** (bcf7e8e)
     - [ ] Read and parse `book/book details.txt` for book information (title, price, etc.).
     - [ ] Confirm `book/book.jpg` is available for use in the UI.
-- [ ] **Task: Implement Core Layout and Styling**
+- [x] **Task: Implement Core Layout and Styling** (a954f75)
     - [ ] Create the main layout component with the Deep Navy and Cream palette.
     - [ ] Implement Dark Mode toggle logic and styles.
     - [ ] Build the Book Display section (Image + Summary).
