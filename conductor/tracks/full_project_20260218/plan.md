@@ -12,9 +12,9 @@
 - [ ] **Task: Setup Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ## Phase 2: UI Foundation and Book Content
-- [ ] **Task: Create `book/` folder and placeholder content**
-    - [ ] Create the `book/` directory.
-    - [ ] Add a placeholder book image and a `details.json` file.
+- [ ] **Task: Analyze Existing Book Content**
+    - [ ] Read and parse `book/book details.txt` for book information (title, price, etc.).
+    - [ ] Confirm `book/book.jpg` is available for use in the UI.
 - [ ] **Task: Implement Core Layout and Styling**
     - [ ] Create the main layout component with the Deep Navy and Cream palette.
     - [ ] Implement Dark Mode toggle logic and styles.
