@@ -3,14 +3,13 @@ import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import Home from './Home'
 
-// Mock global fetch
-global.fetch = vi.fn()
-
 describe('Home Component - Phone Validation', () => {
   beforeEach(() => {
     vi.resetAllMocks()
+    // Mock global fetch
+    vi.stubGlobal('fetch', vi.fn())
     // Default mock for get-count
-    ;(global.fetch as any).mockResolvedValue({
+    ;(fetch as any).mockResolvedValue({
       ok: true,
       json: async () => ({ count: 191 })
     })
@@ -47,8 +46,6 @@ describe('Home Component - Phone Validation', () => {
     const phoneInput = screen.getByLabelText(/ফোন নম্বর/i)
     fireEvent.change(phoneInput, { target: { value: '017112233' } }) // 9 digits
 
-    const submitBtn = screen.getByRole('button', { name: /অর্ডার নিশ্চিত করুন/i })
-    
     // Mock window.alert
     const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {})
 
@@ -57,7 +54,7 @@ describe('Home Component - Phone Validation', () => {
 
     // Should show alert and not call fetch for order
     expect(alertMock).toHaveBeenCalledWith(expect.stringContaining('১১ ডিজিট হতে হবে'))
-    expect(global.fetch).not.toHaveBeenCalledWith('/api/order', expect.anything())
+    expect(fetch).not.toHaveBeenCalledWith('/api/order', expect.anything())
     
     alertMock.mockRestore()
   })
@@ -80,8 +77,6 @@ describe('Home Component - Phone Validation', () => {
     const phoneInput = screen.getByLabelText(/ফোন নম্বর/i)
     fireEvent.change(phoneInput, { target: { value: '017112233ab' } })
 
-    const submitBtn = screen.getByRole('button', { name: /অর্ডার নিশ্চিত করুন/i })
-    
     // Mock window.alert
     const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {})
 
@@ -90,7 +85,7 @@ describe('Home Component - Phone Validation', () => {
 
     // Should show alert
     expect(alertMock).toHaveBeenCalledWith(expect.stringContaining('সঠিক নম্বর লিখুন'))
-    expect(global.fetch).not.toHaveBeenCalledWith('/api/order', expect.anything())
+    expect(fetch).not.toHaveBeenCalledWith('/api/order', expect.anything())
     
     alertMock.mockRestore()
   })
@@ -114,7 +109,7 @@ describe('Home Component - Phone Validation', () => {
     fireEvent.change(phoneInput, { target: { value: '01711223344' } }) // 11 digits
 
     // Mock order response
-    ;(global.fetch as any).mockResolvedValueOnce({
+    ;(fetch as any).mockResolvedValueOnce({
       ok: true,
       json: async () => ({ status: 'success' })
     })
@@ -123,7 +118,7 @@ describe('Home Component - Phone Validation', () => {
     fireEvent.click(submitBtn)
 
     await waitFor(() => {
-        expect(global.fetch).toHaveBeenCalledWith('/api/order', expect.objectContaining({
+        expect(fetch).toHaveBeenCalledWith('/api/order', expect.objectContaining({
             method: 'POST',
             body: expect.stringContaining('01711223344')
         }))
