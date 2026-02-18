@@ -1,0 +1,8 @@
+{
+  "track_id": "preview-fix-phone-val_20260218",
+  "type": "bug_feature",
+  "status": "new",
+  "created_at": "2026-02-18T10:30:00Z",
+  "updated_at": "2026-02-18T10:30:00Z",
+  "description": "Fix preview images not showing on Vercel (space in names) and add an 11-digit phone number validator in the order menu."
+}
