@@ -16,7 +16,7 @@ This plan outlines the steps to add a "Pore Dekhun" button, a dedicated preview 
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) 1968ffe
 
 ## Phase 3: Preview Page Implementation
-- [ ] Task: Write tests for `Preview` component (image rendering, navigation back) in `Preview.test.tsx`
+- [x] Task: Write tests for `Preview` component (image rendering, navigation back) in `Preview.test.tsx` 209f37e
 - [ ] Task: Implement `Preview` component with a horizontal carousel for images in `/book/page 1-4.jpg`
 - [ ] Task: Style the carousel to be centered with empty sides on large screens and touch-friendly on mobile
 - [ ] Task: Add a "Back" button to the `Preview` page to return to the landing page
