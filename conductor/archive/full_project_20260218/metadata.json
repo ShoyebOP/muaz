@@ -1,0 +1,8 @@
+{
+  "track_id": "full_project_20260218",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-18T11:05:00Z",
+  "updated_at": "2026-02-18T11:05:00Z",
+  "description": "Full implementation of the single-page book selling application, including GitHub repo initialization, classic UI design, order popup with billing logic, and Telegram integration via Vercel Serverless Functions."
+}
