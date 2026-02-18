@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Sun, Moon, ShoppingCart, BookOpen, Heart, Sparkles, Truck, ShieldCheck, Star, X } from 'lucide-react'
+import { Sun, Moon, ShoppingCart, BookOpen, Heart, Sparkles, Truck, ShieldCheck, Star, X, Loader2 } from 'lucide-react'
 import './App.css'
 import bookData from './book.json'
 
@@ -11,6 +11,7 @@ function App() {
   })
 
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [orderCount, setOrderCount] = useState(() => {
     const saved = localStorage.getItem('orderCount')
     return saved ? parseInt(saved) : 191
@@ -48,16 +49,40 @@ function App() {
     setOrderData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Telegram integration logic will be implemented in Phase 4
-    // For now, we simulate success
-    alert('আপনার অর্ডারের জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।')
-    setIsModalOpen(false)
-    const newCount = orderCount + 1
-    setOrderCount(newCount)
-    localStorage.setItem('orderCount', newCount.toString())
-    setOrderData({ name: '', phone: '', address: '', email: '' })
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          bookName: bookData.name,
+          totalAmount: bookData.price.discounted + bookData.delivery.charge
+        }),
+      })
+
+      if (response.ok) {
+        alert('আপনার অর্ডারের জন্য ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।')
+        setIsModalOpen(false)
+        const newCount = orderCount + 1
+        setOrderCount(newCount)
+        localStorage.setItem('orderCount', newCount.toString())
+        setOrderData({ name: '', phone: '', address: '', email: '' })
+      } else {
+        const errorData = await response.json()
+        alert(`অর্ডারটি সম্পন্ন করা সম্ভব হয়নি: ${errorData.error || 'Unknown error'}`)
+      }
+    } catch (error) {
+      console.error('Submission error:', error)
+      alert('নেটওয়ার্ক ত্রুটি। আবার চেষ্টা করুন।')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -131,19 +156,19 @@ function App() {
               <form className="order-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="name">আপনার নাম *</label>
-                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} placeholder="নাম লিখুন" />
+                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} placeholder="নাম লিখুন" disabled={isSubmitting} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone">ফোন নম্বর *</label>
-                  <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleInputChange} placeholder="ফোন নম্বর লিখুন" />
+                  <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleInputChange} placeholder="ফোন নম্বর লিখুন" disabled={isSubmitting} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="address">ঠিকানা *</label>
-                  <textarea id="address" name="address" required value={formData.address} onChange={handleInputChange} rows={3} placeholder="সম্পূর্ণ ঠিকানা লিখুন"></textarea>
+                  <textarea id="address" name="address" required value={formData.address} onChange={handleInputChange} rows={3} placeholder="সম্পূর্ণ ঠিকানা লিখুন" disabled={isSubmitting}></textarea>
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">ইমেইল (ঐচ্ছিক)</label>
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="ইমেইল লিখুন" />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="ইমেইল লিখুন" disabled={isSubmitting} />
                 </div>
 
                 <div className="billing-summary">
@@ -161,7 +186,16 @@ function App() {
                   </div>
                 </div>
 
-                <button type="submit" className="confirm-btn">অর্ডার নিশ্চিত করুন</button>
+                <button type="submit" className="confirm-btn" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="animate-spin" size={20} />
+                      অর্ডার প্রসেস হচ্ছে...
+                    </>
+                  ) : (
+                    'অর্ডার নিশ্চিত করুন'
+                  )}
+                </button>
               </form>
             </div>
           </div>
