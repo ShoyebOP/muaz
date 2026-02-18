@@ -13,10 +13,10 @@ describe('Preview Component', () => {
     
     const images = screen.getAllByRole('img')
     expect(images).toHaveLength(4)
-    expect(images[0]).toHaveAttribute('src', '/book/page 1.jpg')
-    expect(images[1]).toHaveAttribute('src', '/book/page 2.jpg')
-    expect(images[2]).toHaveAttribute('src', '/book/page 3.jpg')
-    expect(images[3]).toHaveAttribute('src', '/book/page 4.jpg')
+    expect(images[0]).toHaveAttribute('src', '/book/page-1.jpg')
+    expect(images[1]).toHaveAttribute('src', '/book/page-2.jpg')
+    expect(images[2]).toHaveAttribute('src', '/book/page-3.jpg')
+    expect(images[3]).toHaveAttribute('src', '/book/page-4.jpg')
   })
 
   it('navigates to next and previous images', () => {
