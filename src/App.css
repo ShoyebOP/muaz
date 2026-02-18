@@ -284,7 +284,7 @@ body {
 }
 
 footer {
-  padding: 4rem 0;
+  padding: 2rem 0;
   text-align: center;
   border-top: var(--border-slim);
   color: var(--color-text-muted);
@@ -294,7 +294,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-size: 0.9rem;
 }
 

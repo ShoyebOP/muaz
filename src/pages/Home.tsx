@@ -145,13 +145,23 @@ function Home() {
                   <span className="price-now">{bookData.price.discounted} {bookData.price.currency}</span>
                   <span className="price-was">{bookData.price.normal} {bookData.price.currency}</span>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
-                  <button className="buy-btn" onClick={() => setIsModalOpen(true)}>
-                    <ShoppingCart size={22} strokeWidth={2.5} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+                  <button className="buy-btn" onClick={() => setIsModalOpen(true)} style={{ padding: '1rem', fontSize: '1.1rem' }}>
+                    <ShoppingCart size={20} strokeWidth={2.5} />
                     বইটি অর্ডার করুন
                   </button>
-                  <Link to="/preview" className="buy-btn" style={{ background: 'transparent', border: '2px solid var(--color-gold)', color: 'var(--color-gold)', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <BookOpen size={22} strokeWidth={2.5} />
+                  <Link to="/preview" className="buy-btn" style={{ 
+                    padding: '0.8rem', 
+                    fontSize: '1rem',
+                    background: 'transparent', 
+                    border: '2px solid var(--color-gold)', 
+                    color: 'var(--color-gold)', 
+                    textDecoration: 'none', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center' 
+                  }}>
+                    <BookOpen size={18} strokeWidth={2.5} />
                     পড়ে দেখুন
                   </Link>
                 </div>
@@ -253,9 +263,9 @@ function Home() {
 
       <footer>
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} {bookData.name}. All rights reserved.</p>
-          <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', opacity: '0.8' }}>
-            made by <a href="https://www.facebook.com/shoyeb.morshed.3" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)', textDecoration: 'none', fontWeight: '600' }}>Shoyeb Morshed</a>
+          <p style={{ fontSize: '0.95rem' }}>&copy; {new Date().getFullYear()} {bookData.name}. All rights reserved.</p>
+          <p style={{ marginTop: '0.3rem', fontSize: '0.85rem', opacity: '0.7' }}>
+            made by <a href="https://www.facebook.com/shoyeb.morshed.3" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)', textDecoration: 'none', fontWeight: '500' }}>Shoyeb Morshed</a>
           </p>
           <div className="badges">
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Star size={14} fill="currentColor" /> প্রিমিয়াম কোয়ালিটি</span>
