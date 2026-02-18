@@ -21,14 +21,17 @@
     - [ ] Build the Book Display section (Image + Summary).
 - [x] **Task: Setup Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** (6ba274d)
 
-## Phase 3: Order System and Billing Logic
-- [ ] **Task: Build Order Popup Component**
+## Phase 3: Order System and Billing Logic [checkpoint: 1221749]
+- [x] **Task: Build Order Popup Component** (689eb60)
     - [ ] Implement the modal/popup triggered by the "Order" button.
     - [ ] Create form fields for Full Name, Phone, Address, and Email.
-- [ ] **Task: Implement Billing Logic**
+- [x] **Task: Implement Billing Logic** (689eb60)
     - [ ] Create a utility to calculate the total price including delivery charges.
     - [ ] Display the billing summary in the popup.
-- [ ] **Task: Setup Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
+- [x] **Task: Implement Order Counter** (689eb60)
+    - [ ] Add an order counter UI element near the "Order" button (default: 191).
+    - [ ] Implement logic to increment the counter locally after a successful confirmation.
+- [x] **Task: Setup Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)** (1221749)
 
 ## Phase 4: Telegram Integration and Serverless Function
 - [ ] **Task: Create Vercel Serverless Function for Telegram**
