@@ -40,9 +40,12 @@ describe('App Routing', () => {
         <App />
       </MemoryRouter>
     )
-    const footerLink = screen.getByRole('link', { name: /Shoyeb Morshed/i })
-    expect(footerLink).toBeInTheDocument()
-    expect(footerLink).toHaveAttribute('href', 'https://www.facebook.com/shoyeb.morshed.3')
-    expect(footerLink).toHaveAttribute('target', '_blank')
+    // Check for "made by Shoyeb Morshed" as plain text
+    expect(screen.getByText(/made by Shoyeb Morshed/i)).toBeInTheDocument()
+    // Check for Facebook link with new promotional text
+    const facebookLink = screen.getByRole('link', { name: /Facebook/i })
+    expect(facebookLink).toBeInTheDocument()
+    expect(facebookLink).toHaveAttribute('href', 'https://www.facebook.com/shoyeb.morshed.3')
+    expect(facebookLink).toHaveAttribute('target', '_blank')
   })
 })

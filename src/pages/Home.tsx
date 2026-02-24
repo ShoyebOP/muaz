@@ -297,7 +297,10 @@ function Home() {
         <div className="container">
           <p style={{ fontSize: '0.95rem' }}>&copy; {new Date().getFullYear()} {bookData.name}. All rights reserved.</p>
           <p style={{ marginTop: '0.3rem', fontSize: '0.85rem', opacity: '0.7' }}>
-            made by <a href="https://www.facebook.com/shoyeb.morshed.3" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)', textDecoration: 'none', fontWeight: '500' }}>Shoyeb Morshed</a>
+            made by Shoyeb Morshed
+          </p>
+          <p style={{ marginTop: '0.3rem', fontSize: '0.85rem', opacity: '0.7' }}>
+            Follow me on <a href="https://www.facebook.com/shoyeb.morshed.3" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)', textDecoration: 'none', fontWeight: '500' }}>Facebook</a>, or order sites like this
           </p>
           <div className="badges">
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Star size={14} fill="currentColor" /> প্রিমিয়াম কোয়ালিটি</span>
