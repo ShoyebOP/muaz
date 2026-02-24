@@ -11,7 +11,7 @@ export default async function handler(
     return response.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, phone, address, email, bookName, totalAmount } = request.body;
+  const { name, phone, address, email, referralCode, bookName, totalAmount } = request.body;
 
   if (!name || !phone || !address) {
     return response.status(400).json({ error: 'Missing required fields' });
@@ -33,6 +33,7 @@ export default async function handler(
 *Phone:* ${phone}
 *Address:* ${address}
 *Email:* ${email || 'Not provided'}
+*Referral Code:* ${referralCode || 'Not provided'}
 *Total Amount:* ${totalAmount} TK
 -----------------------
   `;
