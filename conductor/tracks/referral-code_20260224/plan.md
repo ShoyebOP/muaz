@@ -15,7 +15,7 @@
     - [x] Confirm spread operator pattern works without modification
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
-## Phase 2: Backend - Telegram Integration
+## Phase 2: Backend - Telegram Integration [checkpoint: 285d364]
 
 - [x] Task: Update API order handler to accept referral code [2a37755]
     - [x] Add `referralCode` to request body destructuring in `api/order.ts`
@@ -23,7 +23,7 @@
     - [x] Use same "Not provided" pattern as email for empty values
 - [x] Task: Update form submission to send referral code [5d6066f]
     - [x] Add `referralCode` to the `JSON.stringify` payload in `handleSubmit`
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: Footer Creator Promotion Update
 
