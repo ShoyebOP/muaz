@@ -25,29 +25,29 @@
     - [x] Add `referralCode` to the `JSON.stringify` payload in `handleSubmit`
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
-## Phase 3: Footer Creator Promotion Update
+## Phase 3: Footer Creator Promotion Update [checkpoint: dbe1e86]
 
-- [ ] Task: Update footer in `Home.tsx`
-    - [ ] Remove `href` and link wrapper from "made by Shoyeb Morshed" text
-    - [ ] Add new paragraph with "Follow me on Facebook, or order sites like this" text
-    - [ ] Add Facebook link with proper styling and `target="_blank" rel="noopener noreferrer"`
-    - [ ] Maintain existing footer styling and responsive design
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Update footer in `Home.tsx` [dbe1e86]
+    - [x] Remove `href` and link wrapper from "made by Shoyeb Morshed" text
+    - [x] Add new paragraph with "Follow me on Facebook, or order sites like this" text
+    - [x] Add Facebook link with proper styling and `target="_blank" rel="noopener noreferrer"`
+    - [x] Maintain existing footer styling and responsive design
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
-## Phase 4: Testing & Verification
+## Phase 4: Testing & Verification [checkpoint: dbe1e86]
 
-- [ ] Task: Write unit tests for referral code functionality
-    - [ ] Test referral code field renders in correct position
-    - [ ] Test referral code value updates state correctly
-    - [ ] Test form submission includes referral code in payload
-    - [ ] Test form submission works with empty referral code
-- [ ] Task: Write unit tests for footer update
-    - [ ] Test "made by Shoyeb Morshed" is not a link
-    - [ ] Test new Facebook promotional link exists with correct href
-- [ ] Task: Manual testing checklist
-    - [ ] Verify referral code field styling matches other inputs
-    - [ ] Verify form submission with referral code sends to Telegram
-    - [ ] Verify form submission without referral code shows "Not provided"
-    - [ ] Verify footer displays correctly on mobile and desktop
-    - [ ] Verify dark/light theme compatibility
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+- [x] Task: Write unit tests for referral code functionality [dbe1e86]
+    - [x] Test referral code field renders in correct position
+    - [x] Test referral code value updates state correctly
+    - [x] Test form submission includes referral code in payload
+    - [x] Test form submission works with empty referral code
+- [x] Task: Write unit tests for footer update [dbe1e86]
+    - [x] Test "made by Shoyeb Morshed" is not a link
+    - [x] Test new Facebook promotional link exists with correct href
+- [x] Task: Manual testing checklist [dbe1e86]
+    - [x] Verify referral code field styling matches other inputs
+    - [x] Verify form submission with referral code sends to Telegram
+    - [x] Verify form submission without referral code shows "Not provided"
+    - [x] Verify footer displays correctly on mobile and desktop
+    - [x] Verify dark/light theme compatibility
+- [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
