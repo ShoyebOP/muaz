@@ -17,12 +17,12 @@
 
 ## Phase 2: Backend - Telegram Integration
 
-- [ ] Task: Update API order handler to accept referral code
-    - [ ] Add `referralCode` to request body destructuring in `api/order.ts`
-    - [ ] Update Telegram message template to include referral code on separate line
-    - [ ] Use same "Not provided" pattern as email for empty values
-- [ ] Task: Update form submission to send referral code
-    - [ ] Add `referralCode` to the `JSON.stringify` payload in `handleSubmit`
+- [x] Task: Update API order handler to accept referral code [2a37755]
+    - [x] Add `referralCode` to request body destructuring in `api/order.ts`
+    - [x] Update Telegram message template to include referral code on separate line
+    - [x] Use same "Not provided" pattern as email for empty values
+- [x] Task: Update form submission to send referral code [5d6066f]
+    - [x] Add `referralCode` to the `JSON.stringify` payload in `handleSubmit`
 - [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: Footer Creator Promotion Update
