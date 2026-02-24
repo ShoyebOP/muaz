@@ -1,6 +1,6 @@
 # Implementation Plan: Referral Code & Creator Promotion
 
-## Phase 1: Frontend - Referral Code Input Field
+## Phase 1: Frontend - Referral Code Input Field [checkpoint: 922cce6]
 
 - [x] Task: Update order form state to include referral code field [5d6066f]
     - [x] Add `referralCode` property to `formData` state in `Home.tsx`
@@ -13,7 +13,7 @@
     - [x] Add `disabled={isSubmitting}` attribute
 - [x] Task: Verify existing `handleInputChange` handles new field [5d6066f]
     - [x] Confirm spread operator pattern works without modification
-- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Backend - Telegram Integration
 
