@@ -103,7 +103,7 @@ describe('Home Component - Phone Validation', () => {
     // Fill all fields
     fireEvent.change(screen.getByLabelText(/আপনার নাম/i), { target: { value: 'Test User' } })
     fireEvent.change(screen.getByLabelText(/ঠিকানা/i), { target: { value: 'Test Address' } })
-    
+
     // Fill valid phone
     const phoneInput = screen.getByLabelText(/ফোন নম্বর/i)
     fireEvent.change(phoneInput, { target: { value: '01711223344' } }) // 11 digits
@@ -122,6 +122,113 @@ describe('Home Component - Phone Validation', () => {
             method: 'POST',
             body: expect.stringContaining('01711223344')
         }))
+    })
+  })
+})
+
+describe('Home Component - Referral Code Field', () => {
+  beforeEach(() => {
+    vi.resetAllMocks()
+    // Mock global fetch
+    vi.stubGlobal('fetch', vi.fn())
+    // Default mock for get-count
+    ;(fetch as any).mockResolvedValue({
+      ok: true,
+      json: async () => ({ count: 191 })
+    })
+  })
+
+  it('renders referral code input field after email field', () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    )
+
+    // Open modal
+    fireEvent.click(screen.getByRole('button', { name: /বইটি অর্ডার করুন/i }))
+
+    // Check referral code field exists
+    const referralInput = screen.getByLabelText(/রেফারেল কোড/i)
+    expect(referralInput).toBeInTheDocument()
+    expect(referralInput).toHaveAttribute('type', 'text')
+  })
+
+  it('updates referral code value in form state', () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    )
+
+    // Open modal
+    fireEvent.click(screen.getByRole('button', { name: /বইটি অর্ডার করুন/i }))
+
+    const referralInput = screen.getByLabelText(/রেফারেল কোড/i)
+    fireEvent.change(referralInput, { target: { value: 'SAVE20' } })
+
+    expect(referralInput).toHaveValue('SAVE20')
+  })
+
+  it('includes referral code in form submission payload', async () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    )
+
+    // Open modal
+    fireEvent.click(screen.getByRole('button', { name: /বইটি অর্ডার করুন/i }))
+
+    // Fill all fields including referral code
+    fireEvent.change(screen.getByLabelText(/আপনার নাম/i), { target: { value: 'Test User' } })
+    fireEvent.change(screen.getByLabelText(/ফোন নম্বর/i), { target: { value: '01711223344' } })
+    fireEvent.change(screen.getByLabelText(/ঠিকানা/i), { target: { value: 'Test Address' } })
+    fireEvent.change(screen.getByLabelText(/রেফারেল কোড/i), { target: { value: 'SAVE20' } })
+
+    // Mock order response
+    ;(fetch as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ status: 'success' })
+    })
+
+    const submitBtn = screen.getByRole('button', { name: /অর্ডার নিশ্চিত করুন/i })
+    fireEvent.click(submitBtn)
+
+    await waitFor(() => {
+      expect(fetch).toHaveBeenCalledWith('/api/order', expect.objectContaining({
+        method: 'POST',
+        body: expect.stringContaining('SAVE20')
+      }))
+    })
+  })
+
+  it('submits successfully with empty referral code', async () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    )
+
+    // Open modal
+    fireEvent.click(screen.getByRole('button', { name: /বইটি অর্ডার করুন/i }))
+
+    // Fill required fields only (no referral code)
+    fireEvent.change(screen.getByLabelText(/আপনার নাম/i), { target: { value: 'Test User' } })
+    fireEvent.change(screen.getByLabelText(/ফোন নম্বর/i), { target: { value: '01711223344' } })
+    fireEvent.change(screen.getByLabelText(/ঠিকানা/i), { target: { value: 'Test Address' } })
+
+    // Mock order response
+    ;(fetch as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ status: 'success' })
+    })
+
+    const submitBtn = screen.getByRole('button', { name: /অর্ডার নিশ্চিত করুন/i })
+    fireEvent.click(submitBtn)
+
+    await waitFor(() => {
+      expect(fetch).toHaveBeenCalledWith('/api/order', expect.anything())
     })
   })
 })

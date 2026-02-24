@@ -22,7 +22,8 @@ function Home() {
     name: '',
     phone: '',
     address: '',
-    email: ''
+    email: '',
+    referralCode: ''
   })
 
   // Fetch global count on mount
@@ -101,7 +102,7 @@ function Home() {
         setIsModalOpen(false)
         // Optimistic update
         setOrderCount(prev => prev + 1)
-        setOrderData({ name: '', phone: '', address: '', email: '' })
+        setOrderData({ name: '', phone: '', address: '', email: '', referralCode: '' })
       } else {
         const errorData = await response.json()
         alert(`অর্ডারটি সম্পন্ন করা সম্ভব হয়নি: ${errorData.error || 'Unknown error'}`)
@@ -225,6 +226,10 @@ function Home() {
                 <div className="form-group">
                   <label htmlFor="email">ইমেইল (ঐচ্ছিক)</label>
                   <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="ইমেইল লিখুন" disabled={isSubmitting} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="referralCode">রেফারেল কোড (ঐচ্ছিক)</label>
+                  <input type="text" id="referralCode" name="referralCode" value={formData.referralCode} onChange={handleInputChange} placeholder="রেফারেল কোড লিখুন" disabled={isSubmitting} />
                 </div>
 
                 <div className="billing-summary">
