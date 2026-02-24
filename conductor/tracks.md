@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: Referral Code & Creator Promotion**
+- [x] **Track: Referral Code & Creator Promotion**
 *Link: [./referral-code_20260224/](./referral-code_20260224/)*
